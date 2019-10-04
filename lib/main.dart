@@ -15,7 +15,7 @@ class _PasswordState extends State<Password> {
   String c ;
   String z;
   String r;
- List words = Words.list;
+// List words = Words.list;
   void PasswordGenerator() {
     generateWordPairs().take(1);
     setState(() {
