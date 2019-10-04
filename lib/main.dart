@@ -19,18 +19,11 @@ class _PasswordState extends State<Password> {
   void PasswordGenerator() {
     generateWordPairs().take(1);
     setState(() {
-     /* String z = "";
-      for (int i = 0; i <= 5; i++) {
-        int y = Random().nextInt(Words.list.length);
-        z = z + ' ' + Words.list[y];
-      }*/for(int i=0;i<=3;i++)
-        {
           a = WordPair.random(random: Random()).asCamelCase;
           b = WordPair.random(random: Random()).asCamelCase;
           c = WordPair.random(random: Random()).asCamelCase;
         }
-
-    });
+        );
   }
 
   @override
