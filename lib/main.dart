@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:english_words/english_words.dart';
 import 'package:day_4_random_word_assignment/words.dart';
 import 'package:flutter/material.dart';
 //import 'package:dart_random_choice/dart_random_choice.dart';
@@ -13,15 +13,24 @@ class _PasswordState extends State<Password> {
   String a ;
   String b ;
   String c ;
+  String z;
+  String r;
   List words = Words.list;
   void PasswordGenerator() {
+    generateWordPairs().take(1);
     setState(() {
-      final _random = new Random();
-       a = words[_random.nextInt(words.length)];
-       b = words[_random.nextInt(words.length)];
-      c = words[_random.nextInt(words.length)];
-    },
-    );
+     /* String z = "";
+      for (int i = 0; i <= 5; i++) {
+        int y = Random().nextInt(Words.list.length);
+        z = z + ' ' + Words.list[y];
+      }*/for(int i=0;i<=3;i++)
+        {
+          a = WordPair.random(random: Random()).asCamelCase;
+          b = WordPair.random(random: Random()).asCamelCase;
+          c = WordPair.random(random: Random()).asCamelCase;
+        }
+
+    });
   }
 
   @override
@@ -33,20 +42,22 @@ class _PasswordState extends State<Password> {
       body: Padding(
         padding: const EdgeInsets.all(100.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Text('$a $b $c'),
-            FlatButton(color: Colors.blue,
-              child: new Text('New Password', textAlign: TextAlign.center),
-              onPressed: PasswordGenerator,
-            ),
+            Text('$a $b $c',textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w700,fontSize: 15.0),),
+
+            FlatButton(
+                color: Colors.blue,
+                child: new Text('New Password', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w600),),
+                onPressed: PasswordGenerator,
+              ),
           ],
         ),
       ),
     );
   }
 }
-
 void main() {
   runApp(
     MaterialApp(
